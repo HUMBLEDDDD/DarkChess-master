@@ -1,4 +1,4 @@
-package chessComponent.component;
+package chessComponent;
 
 import chessComponent.ChessComponent;
 import controller.ClickController;
@@ -7,15 +7,15 @@ import model.ChessboardPoint;
 
 import java.awt.*;
 
-public class AdvisorChessComponent extends ChessComponent{
-        public AdvisorChessComponent(ChessboardPoint chessboardPoint, Point location, ChessColor chessColor, ClickController clickController, int size) {
+public class CannonChessComponent extends ChessComponent{
+
+        public CannonChessComponent(ChessboardPoint chessboardPoint, Point location, ChessColor chessColor, ClickController clickController, int size) {
             super(chessboardPoint, location, chessColor, clickController, size);
             if (this.getChessColor() == ChessColor.RED) {
-                name = "仕";
+                name = "炮";
             } else {
-                name = "士";
+                name = "砲";
             }
         }
     }
-
 

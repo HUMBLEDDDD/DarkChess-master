@@ -1,9 +1,7 @@
 package view;
 
 
-import chessComponent.component.*;
-import chessComponent.EmptySlotComponent;
-import chessComponent.SquareComponent;
+import chessComponent.*;
 import model.*;
 import controller.ClickController;
 
@@ -95,7 +93,36 @@ public class Chessboard extends JComponent {
         for (int i = 0; i < squareComponents.length; i++) {
             for (int j = 0; j < squareComponents[i].length; j++) {
                 ChessColor color = r1.nextInt(2) == 0 ? ChessColor.RED : ChessColor.BLACK;
+
+                int count0r=0;int count0b=0;
+                int count1r=0;int count1b=0;
+                int count2r=0;int count2b=0;
+                int count3r=0;int count3b=0;
+                int count4r=0;int count4b=0;
+                int count5r=0;int count5b=0;
+                int count6r=0;int count6b=0;//记录生成的每种棋子个数
                 int m =r2.nextInt(7);
+                boolean flag=true;
+                while(flag){
+                    if      (m==0 && count0r<1 && color.name()=="RED"){count0r++;flag=false;}
+                    else if (m==1 && count1r<2 && color.name()=="RED"){count1r++;flag=false;}
+                    else if (m==2 && count2r<2 && color.name()=="RED"){count2r++;flag=false;}
+                    else if (m==3 && count3r<2 && color.name()=="RED"){count3r++;flag=false;}
+                    else if (m==4 && count4r<2 && color.name()=="RED"){count4r++;flag=false;}
+                    else if (m==5 && count5r<5 && color.name()=="RED"){count5r++;flag=false;}
+                    else if (m==6 && count6r<2 && color.name()=="RED"){count6r++;flag=false;}
+                    else if (m==0 && count0b<1 && color.name()=="BLACK"){count0b++;flag=false;}
+                    else if (m==1 && count1b<2 && color.name()=="BLACK"){count1b++;flag=false;}
+                    else if (m==2 && count2b<2 && color.name()=="BLACK"){count2b++;flag=false;}
+                    else if (m==3 && count3b<2 && color.name()=="BLACK"){count3b++;flag=false;}
+                    else if (m==4 && count4b<2 && color.name()=="BLACK"){count4b++;flag=false;}
+                    else if (m==5 && count5b<5 && color.name()=="BLACK"){count5b++;flag=false;}
+                    else if (m==6 && count6b<2 && color.name()=="BLACK"){count6b++;flag=false;}
+                    else{
+                        m =r2.nextInt(7);//重新取一个m
+                    }
+                }
+
                 SquareComponent squareComponent;
                 if (m == 0) {
                     squareComponent = new GeneralChessComponent(new ChessboardPoint(i, j), calculatePoint(i, j), color, clickController, CHESS_SIZE);}
